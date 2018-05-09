@@ -1,0 +1,42 @@
+CREATE TABLES:
+===============
+CREATE TABLE application_user(
+	id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(50) NULL,
+	middle_name VARCHAR(50) NULL,
+	last_name VARCHAR(50) NOT NULL,
+	created_on DATE NOT NULL,
+	modified_on DATE NOT NULL,
+	expired_on DATE NULL,
+	PRIMARY KEY (id)
+) ENGINE=INNODB;
+ALTER TABLE application_user AUTO_INCREMENT = 10001;
+INSERT INTO application_user VALUES ( DEFAULT, NULL, NULL, 'ADMINISTRATOR', CURDATE(), CURDATE(), NULL);
+INSERT INTO application_user VALUES ( DEFAULT, 'RATHNA', NULL, 'KALIANNAN', CURDATE(), CURDATE(), NULL);
+
+CREATE TABLE login (
+	id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(20) UNIQUE NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	application_user_id MEDIUMINT NOT NULL,
+	created_by MEDIUMINT NOT NULL,
+	modified_by MEDIUMINT NOT NULL,
+	created_on DATE NOT NULL,
+	modified_on DATE NOT NULL,
+	expired_on DATE NULL,
+	PRIMARY KEY(id),
+	INDEX (application_user_id),
+	FOREIGN KEY (application_user_id)
+		REFERENCES application_user(id)
+		ON UPDATE CASCADE ON DELETE RESTRICT,
+	INDEX (created_by),
+	FOREIGN KEY (created_by)
+		REFERENCES application_user(id)
+		ON UPDATE CASCADE ON DELETE RESTRICT,
+	INDEX (modified_by),
+	FOREIGN KEY (modified_by)
+		REFERENCES application_user(id)
+		ON UPDATE CASCADE ON DELETE RESTRICT
+   ) ENGINE=INNODB;
+ALTER TABLE login AUTO_INCREMENT = 10001;
+INSERT INTO login VALUES (DEFAULT,'admin','admin',10001,10001,10001,CURDATE(),CURDATE(),NULL);
