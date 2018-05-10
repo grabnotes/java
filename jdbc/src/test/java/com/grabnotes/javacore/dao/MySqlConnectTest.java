@@ -2,7 +2,7 @@
  * @author Rathna Kaliannan
  * All rights reserved
 */
-package com.grabnotes.javacore.jdbc;
+package com.grabnotes.javacore.dao;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

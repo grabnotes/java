@@ -2,11 +2,15 @@
  * @author Rathna Kaliannan
  * All rights reserved
 */
-package com.grabnotes.javacore.jdbc;
+package com.grabnotes.javacore.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * This class aids in creating a MySQL Connection
+ *
+ */
 public class MySqlConnect {
 
 	/**
