@@ -12,6 +12,6 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-    <bean id="inventory" class="com.grabnotes.java.framework.TXInventory"></bean>
+    <bean id="inventory" class="com.tx.library.TXInventory"></bean>
 
 </beans>
