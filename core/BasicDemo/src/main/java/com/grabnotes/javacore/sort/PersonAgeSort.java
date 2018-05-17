@@ -1,4 +1,7 @@
-package com.grabnotes.javacore.sort;
+/** Copyright 2018 grabnotes.com
+ * @author Rathna Kaliannan
+ * All rights reserved
+*/package com.grabnotes.javacore.sort;
 
 import java.util.Comparator;
 

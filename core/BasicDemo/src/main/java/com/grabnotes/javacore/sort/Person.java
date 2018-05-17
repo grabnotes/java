@@ -1,3 +1,7 @@
+/** Copyright 2018 grabnotes.com
+ * @author Rathna Kaliannan
+ * All rights reserved
+*/
 package com.grabnotes.javacore.sort;
 
 public class Person implements Comparable<Person>{

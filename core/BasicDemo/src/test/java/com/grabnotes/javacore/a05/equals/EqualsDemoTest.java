@@ -4,9 +4,7 @@
 */
 package com.grabnotes.javacore.a05.equals;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class EqualsDemoTest extends TestCase {
 	
