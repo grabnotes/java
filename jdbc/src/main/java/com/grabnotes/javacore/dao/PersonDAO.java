@@ -7,25 +7,46 @@ package com.grabnotes.javacore.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PersonDAO {
-	public void insert(String name, int age) throws Exception {
-		Connection con = MySqlConnect.getConnection();
-		String insertsql = "insert into application_user(name,age) values (?,?)";
-		PreparedStatement ps = con.prepareStatement(insertsql);
-		ps.setString(1, name);
-		ps.setInt(2, age);
-		ps.executeUpdate();
+	public void insert(String name, int age) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = MySqlConnect.getConnection();
+
+			String insertsql = "insert into application_user(name,age) values (?,?)";
+			ps = con.prepareStatement(insertsql);
+			ps.setString(1, name);
+			ps.setInt(2, age);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if( ps != null)
+			{
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
 	}
+
+	public void getAll() {
+
+		try(	PreparedStatement ps = con.prepareStatement(RETRIEVE_SQL)) {
+			Connection con = MySqlConnect.getConnection();
+			ResultSet rs = ps.executeQuery();
 	
-	public void getAll() throws Exception {
-		Connection con = MySqlConnect.getConnection();
-		PreparedStatement ps = con.prepareStatement(RETRIEVE_SQL);
-		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next())
-		{
-			System.out.println("Name: " + rs.getString("name") + " ;Age: " + rs.getInt("age"));
+			while (rs.next()) {
+				System.out.println("Name: " + rs.getString("name") + " ;Age: " + rs.getInt("age"));
+			}
+		} catch (Exception e) {
+			System.out.println("do same thing");
 		}
 	}
 

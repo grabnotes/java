@@ -6,6 +6,7 @@ package com.grabnotes.javacore.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * This class aids in creating a MySQL Connection
@@ -31,13 +32,15 @@ public class MySqlConnect {
 				
 				// double checked locking
 				if (connection == null) { //We are checking again in case of multithreaded access, thread 2 at this point will have connection == null and the resource needs to be instantiated again which is expensive
-					try {
-						Class.forName("com.mysql.jdbc.Driver").newInstance();
-						connection = DriverManager.getConnection(connection_string, username, password);
+					
+						try {
+							Class.forName("com.mysql.jdbc.Driver").newInstance();
+							connection = DriverManager.getConnection(connection_string, username, password);
+						} catch (InstantiationException|IllegalAccessException|ClassNotFoundException|SQLException e) {
+							throw e;
+						}
 						System.out.println("Database connection with MYSQL established");
-					} catch (Exception e) {
-						throw new Exception("Error connecting to database");
-					}
+					
 				}
 			}
 		}
