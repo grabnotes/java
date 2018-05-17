@@ -4,6 +4,13 @@
 */
 package com.grabnotes.javacore.a04.interfaces18;
 
+/**
+ * ClassB implements everything from InterfaceA except Static
+ * ClassB has to override default method if two interfaces have the same default method name. Otherwise
+ * compiler wouldn't know which to choose.
+ * @author rathnak
+ *
+ */
 public class ClassB implements InterfaceA, InterfaceB{
 
 	@Override

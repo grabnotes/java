@@ -4,6 +4,12 @@
 */
 package com.grabnotes.javacore.a04.interfaces18;
 
+/**
+ * Examples of 'default' and 'static' methods in interfaces
+ * 
+ * @author rathnak
+ *
+ */
 public interface InterfaceB {
 	void printMe();
 	

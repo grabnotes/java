@@ -3,6 +3,7 @@
  * All rights reserved
 */
 package com.grabnotes.javacore.a04.interfaces18;
+
 /**
  * ClassA implements everything from InterfaceA except Static
  * ClassA has to override default method if two interfaces have the same default method name. Otherwise
