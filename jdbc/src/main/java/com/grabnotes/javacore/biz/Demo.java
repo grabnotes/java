@@ -8,16 +8,18 @@ import com.grabnotes.javacore.dao.MySqlConnect;
 import com.grabnotes.javacore.dao.PersonDAO;
 
 public class Demo {
-	public static void main(String args[]) throws Exception {
-		try {
+	public static void main(String args[]) {
+		try 
+		{
 			MySqlConnect.getConnection();
-		} catch (Exception e) {
+			
+			PersonDAO personDao = new PersonDAO();
+			personDao.insert("jim", 25);
+			personDao.getAll();	
+		} 
+		catch (Exception e) 
+		{
 			System.out.println(e);
 		}
-		
-		PersonDAO personDao = new PersonDAO();
-		personDao.insert("jim", 25);
-		personDao.getAll();
-		
 	}
 }

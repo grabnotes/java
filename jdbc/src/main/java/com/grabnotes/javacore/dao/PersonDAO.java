@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonDAO {
-	public void insert(String name, int age) {
+	public void insert(String name, int age) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
@@ -23,30 +23,31 @@ public class PersonDAO {
 			ps.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw e;
 		} finally {
 			if( ps != null)
 			{
 				try {
 					ps.close();
 				} catch (SQLException e) {
-					System.out.println(e.getMessage());
+					throw e;
 				}
 			}
 		}
 	}
 
-	public void getAll() {
+	public void getAll() throws Exception {
 
+		Connection con = MySqlConnect.getConnection();
 		try(	PreparedStatement ps = con.prepareStatement(RETRIEVE_SQL)) {
-			Connection con = MySqlConnect.getConnection();
+			
 			ResultSet rs = ps.executeQuery();
 	
 			while (rs.next()) {
 				System.out.println("Name: " + rs.getString("name") + " ;Age: " + rs.getInt("age"));
 			}
 		} catch (Exception e) {
-			System.out.println("do same thing");
+			throw e;
 		}
 	}
 
