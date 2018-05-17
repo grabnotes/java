@@ -13,14 +13,8 @@ public class ClassB implements InterfaceA, InterfaceB{
 	}
 
 	@Override
-	public void amuseInterfaceB() {
-		System.out.println("ClassA amusing InterfaceB");
-	}
-
-	@Override
-	public void printInterfaceSolution() {
-		// TODO Auto-generated method stub
-		InterfaceB.super.printInterfaceSolution();
+	public void printDefault() {
+		InterfaceB.super.printDefault();
 	}
 
 }

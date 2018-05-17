@@ -5,13 +5,13 @@
 package com.grabnotes.javacore.a04.interfaces18;
 
 public interface InterfaceB {
-	void amuseInterfaceB();
+	void printMe();
 	
-	static void interfaceBveryOwn() {
-		System.out.println("Interface B's very own method. No one can use it");
+	default void printDefault() {
+		System.out.println("Interface B default");
 	}
 	
-	default void printInterfaceSolution() {
-		System.out.println("Interface A");
+	static void printStatic() {
+		System.out.println("Interface B's very own method. No one can use it");
 	}
 }

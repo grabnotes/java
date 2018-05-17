@@ -26,11 +26,8 @@ public class LambdaDemo{
 	}
 }
 
-
 interface Calculator {
 	int operation(int a, int b);
-//	int add(int a, int b);
-//	int subtract(int a, int b);
 }
 
 interface Bank {
